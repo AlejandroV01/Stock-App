@@ -1,24 +1,45 @@
+.Nav {
+  padding: 1rem 0rem;
+  display: flex;
+  align-items: center;
+}
+
 .list {
   text-decoration: none;
   list-style-type: none;
   display: flex;
   gap: 2rem;
-  padding: 1rem 2rem;
   align-items: center;
+  padding: 0;
+  padding-left: 3rem;
 }
 
 .list li a {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   text-decoration: none;
-  color: black;
 }
-
-.Nav {
-  padding: 1rem 0;
+.list li {
+  padding-bottom: 2px;
 }
-
+.list li:hover {
+  padding-bottom: 0;
+  border-bottom: #228be6 2px solid;
+  height: calc(100% - 2px);
+}
 .centerFlex {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.logoDiv {
+  padding-right: 3rem;
+  border-right: 2px solid rgba(97, 97, 97, 0.274);
+}
+
+.buttonDiv {
+  display: flex;
+  gap: 1rem;
+  width: 100%;
+  justify-content: flex-end;
 }

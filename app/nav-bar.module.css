@@ -1,0 +1,24 @@
+.list {
+  text-decoration: none;
+  list-style-type: none;
+  display: flex;
+  gap: 2rem;
+  padding: 1rem 2rem;
+  align-items: center;
+}
+
+.list li a {
+  font-size: 1.3rem;
+  text-decoration: none;
+  color: black;
+}
+
+.Nav {
+  padding: 1rem 0;
+}
+
+.centerFlex {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

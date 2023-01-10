@@ -1,22 +1,30 @@
 .Nav {
-  padding: 1rem 0rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
+  position: fixed;
+  width: calc(100% - 1rem);
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(5px);
+  background-color: rgb(18, 22, 33, 0.7);
+  border-bottom: 1px solid rgb(50, 50, 50);
 }
 
 .list {
   text-decoration: none;
   list-style-type: none;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   padding: 0;
-  padding-left: 3rem;
+  padding-left: 1.5rem;
 }
 
 .list li a {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-decoration: none;
+  color: white;
 }
 .list li {
   padding-bottom: 2px;
@@ -33,13 +41,13 @@
 }
 
 .logoDiv {
-  padding-right: 3rem;
+  padding-right: 2rem;
   border-right: 2px solid rgba(97, 97, 97, 0.274);
 }
 
 .buttonDiv {
   display: flex;
-  gap: 1rem;
+  gap: 0.2rem;
   width: 100%;
   justify-content: flex-end;
 }

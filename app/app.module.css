@@ -1,0 +1,10 @@
+.main_layout {
+  background-color: rgb(18, 22, 33);
+  color: white;
+  max-width: 1200px;
+  margin: auto;
+}
+.app_content {
+  padding: 1rem;
+  padding-top: 100px;
+}

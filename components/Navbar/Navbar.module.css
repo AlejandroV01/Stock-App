@@ -2,6 +2,13 @@
   padding: 0.5rem;
   display: flex;
   align-items: center;
+  position: fixed;
+  width: calc(100% - 1rem);
+  left: 0;
+  top: 0;
+  backdrop-filter: blur(5px);
+  background-color: rgb(18, 22, 33, 0.7);
+  border-bottom: 1px solid rgb(50, 50, 50);
 }
 
 .list {
@@ -34,7 +41,7 @@
 }
 
 .logoDiv {
-  padding-right: 3rem;
+  padding-right: 2rem;
   border-right: 2px solid rgba(97, 97, 97, 0.274);
 }
 

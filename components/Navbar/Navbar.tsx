@@ -12,7 +12,7 @@ const Navbar = (): JSX.Element => {
       <div className={styles.logoDiv} style={{ position: "relative" }}>
         <Link className={styles.centerFlex} href="/">
           <Image
-            alt=""
+            alt="logo"
             height={100}
             src="/images/alogo-4.png"
             style={{

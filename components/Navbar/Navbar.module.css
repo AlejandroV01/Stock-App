@@ -1,5 +1,5 @@
 .Nav {
-  padding: 1rem 0rem;
+  padding: 0.5rem;
   display: flex;
   align-items: center;
 }
@@ -8,15 +8,16 @@
   text-decoration: none;
   list-style-type: none;
   display: flex;
-  gap: 2rem;
+  gap: 1.5rem;
   align-items: center;
   padding: 0;
-  padding-left: 3rem;
+  padding-left: 1.5rem;
 }
 
 .list li a {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-decoration: none;
+  color: white;
 }
 .list li {
   padding-bottom: 2px;

@@ -1,0 +1,9 @@
+.main_layout {
+  background-color: #131722;
+  color: white;
+  max-width: 1200px;
+  margin: auto;
+}
+.app_content {
+  padding: 1rem;
+}

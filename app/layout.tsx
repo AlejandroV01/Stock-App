@@ -1,7 +1,7 @@
 import React from "react";
 import { Heebo } from "@next/font/google";
-import styles from "./app.css";
 import Navbar from "../components/Navbar/Navbar";
+import styles from "./app.module.css";
 
 const heebo = Heebo({ subsets: ["latin"] });
 
@@ -13,9 +13,9 @@ export default function RootLayout({
   return (
     <html className={`${heebo.className} ${styles.enable}`} lang="en">
       <head />
-      <body style={{ padding: "0 5rem", backgroundColor: "#131722" }}>
+      <body className={styles.main_layout}>
         <Navbar />
-        <div>{children}</div>
+        <div className={styles.app_content}>{children}</div>
       </body>
     </html>
   );

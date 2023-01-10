@@ -4,9 +4,9 @@ import { Button } from "@granite/core";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-import styles from "./nav-bar.module.css";
+import styles from "./Navbar.module.css";
 
-const NavBar = () => {
+const Navbar = (): JSX.Element => {
   return (
     <nav className={styles.Nav}>
       <div className={styles.logoDiv} style={{ position: "relative" }}>
@@ -43,4 +43,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+export default Navbar;

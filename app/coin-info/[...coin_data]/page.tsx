@@ -1,4 +1,7 @@
 import React from "react";
+import MainChart from "../../../components/Charts/Candles/Candles";
+import HistoryChart from "../../../components/Charts/History/HistoryChart";
+import { IHistory } from "../../../types/api/IHistory";
 
 interface PageProps {
   params: {
@@ -22,8 +25,8 @@ const getCoinHistoricData = async ({
 }: {
   coin_id: string;
   history: string;
-}) => {
-  const res: any = await fetch(
+}): Promise<IHistory> => {
+  const res = await fetch(
     `https://api.coincap.io/v2/assets/${coin_id}/history?interval=${history}`,
     {
       cache: "no-store",
@@ -59,6 +62,7 @@ const CoinInfoPage = async ({ params }: PageProps): Promise<JSX.Element> => {
       <p>id: {params.coin_data[0]}</p>
       <p>history: {params.coin_data[1]}</p>
       <br />
+      <HistoryChart data={coinHistory.data} />
       <h2>Basic data:</h2>
       <p>{JSON.stringify(coinInfo)}</p>
       <br />

@@ -48,6 +48,8 @@
     "typescript-sort-keys/interface": "error",
     "typescript-sort-keys/string-enum": "error",
     "react/jsx-sort-props": "error",
+    "@typescript-eslint/comma-dangle": "off",
+    "react/jsx-one-expression-per-line": "off",
     "react/function-component-definition": [
       2,
       {

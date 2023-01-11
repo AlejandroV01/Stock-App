@@ -1,5 +1,4 @@
 import React from "react";
-import MainChart from "../../../components/Charts/Candles/Candles";
 import HistoryChart from "../../../components/Charts/History/HistoryChart";
 import { IHistory } from "../../../types/api/IHistory";
 

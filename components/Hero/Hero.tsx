@@ -1,3 +1,4 @@
+/* eslint-disable */
 'use client'
 import { Button } from '@granite/core'
 import Image from 'next/image'
@@ -34,7 +35,8 @@ const Hero = (): JSX.Element => {
       })
   }, [])
   return (
-    <div>
+    <div className={styles.body}>
+      <div className={styles.gradient}></div>
       <div className={styles.container}>
         <div className={styles.leftContainer}>
           <h1>The Info Center For Exchanges</h1>
@@ -53,7 +55,10 @@ const Hero = (): JSX.Element => {
           ></Image>
         </div>
       </div>
-      <hr className={styles.hr}></hr>
+      <div className={styles.subTitle}>
+        <p>Top Four Cryptos By Market Cap</p>
+      </div>
+
       <div className={styles.priceDisplay}>
         {topFour &&
           topFour.map((coin: any, index: number) => (

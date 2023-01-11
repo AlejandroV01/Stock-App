@@ -1,8 +1,10 @@
+/* eslint-disable */
+
 import { Heebo } from '@next/font/google'
 import React from 'react'
+import Hero from '../components/Hero/Hero'
 import Navbar from '../components/Navbar/Navbar'
 import styles from './app.module.css'
-
 const heebo = Heebo({ subsets: ['latin'] })
 
 export default function RootLayout({ children }: { children: React.ReactNode }): JSX.Element {

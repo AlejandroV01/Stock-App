@@ -1,0 +1,57 @@
+.container {
+  display: flex;
+  align-items: center;
+}
+
+.leftContainer {
+  width: 40%;
+}
+
+.rightContainer {
+  width: 60%;
+  position: relative;
+}
+
+.leftContainer h1 {
+  font-size: 2.5rem;
+}
+
+.leftContainer p {
+  font-size: 1.5rem;
+}
+
+.heroButton {
+  margin: 0;
+}
+
+.hr {
+  border: 1px solid rgba(255, 255, 255, 0.11);
+  margin-top: 25px;
+  width: 75%;
+}
+
+.card {
+  background-color: #228be6b0;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 1rem 0;
+  padding-left: 1rem;
+}
+
+.priceDisplay {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.cardInfo p {
+  margin: 0;
+}
+.cardInfo {
+  margin-left: 1rem;
+}
+.priceContainer {
+  display: flex;
+}

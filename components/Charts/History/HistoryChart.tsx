@@ -41,9 +41,7 @@ const HistoryChart = ({ data }: IHistory): JSX.Element => {
             autoSelected: "zoom",
           },
         },
-        // theme: {
-        //   mode: "dark",
-        // },
+
         dataLabels: {
           enabled: false,
         },

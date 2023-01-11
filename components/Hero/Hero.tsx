@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@granite/core";
+import { Button, Divider } from "@granite/core";
 import Image from "next/image";
 import React from "react";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
@@ -33,7 +33,7 @@ const Hero = ({ topFour }: Props): JSX.Element => {
           />
         </div>
       </div>
-      <hr className={styles.hr} />
+      <Divider color="white" label="Top 4 coins today" labelPosition="left" />
       <div className={styles.priceDisplay}>
         {topFour.map((coin: ICoin) => {
           return (

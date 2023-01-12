@@ -1,20 +1,13 @@
-<<<<<<< HEAD
-/* eslint-disable */
-
-import { Heebo } from '@next/font/google'
-import React from 'react'
-import Hero from '../components/Hero/Hero'
-import Navbar from '../components/Navbar/Navbar'
-import styles from './app.module.css'
-const heebo = Heebo({ subsets: ['latin'] })
-=======
 import { Heebo } from "@next/font/google";
 import React from "react";
 import Navbar from "../components/Navbar/Navbar";
 import styles from "./app.module.css";
 
-const heebo = Heebo({ subsets: ["latin"] });
->>>>>>> a1d22f5c995cd3ef5358556f5c64f9f45643b17c
+const heebo = Heebo({
+  subsets: ["latin"],
+  style: ["normal"],
+  weight: ["100", "200", "300", "400", "500", "600", "700", "800"],
+});
 
 export default function RootLayout({
   children,

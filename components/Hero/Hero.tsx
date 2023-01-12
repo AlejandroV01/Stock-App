@@ -1,10 +1,8 @@
 "use client";
 
-import { Button, Divider } from "@granite/core";
-import Image from "next/image";
+import { Divider } from "@granite/core";
 import React from "react";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
-import StockBG from "../../public/images/undrawinvest.svg";
 import { ICoin } from "../../types/api/ICoin";
 import styles from "./Hero.module.css";
 
@@ -20,18 +18,6 @@ const Hero = ({ topFour }: Props): JSX.Element => {
         <div className={styles.leftContainer}>
           <h1>The Info Center For Exchanges</h1>
           <p>Idea, Search, Find, Act.</p>
-          <Button className={styles.heroButton}>Get Started</Button>
-        </div>
-        <div className={styles.rightContainer}>
-          <Image
-            alt=""
-            src={StockBG}
-            style={{
-              height: "fit-content",
-              objectFit: "contain",
-            }}
-            width={550}
-          />
         </div>
       </div>
       <Divider color="white" label="Top 4 coins today" labelPosition="left" />
@@ -40,36 +26,45 @@ const Hero = ({ topFour }: Props): JSX.Element => {
           return (
             <div key={`top-four-coin-${coin.id}`} className={styles.card}>
               {coin.symbol && (
-                <Image
+                <img
                   alt=""
-                  height={50}
+                  className={styles.coinIcon}
                   src={`https://cryptoicons.org/api/black/${coin.symbol.toLowerCase()}/50`}
-                  style={{ height: "fit-content", objectFit: "contain" }}
-                  width={50}
                 />
               )}
               <div className={styles.cardInfo}>
-                {coin.name && (
-                  <p>
-                    {coin.name.charAt(0).toUpperCase() + coin.name.slice(1)}
-                  </p>
-                )}
-                <div className={styles.priceContainer}>
-                  {coin.priceUsd && coin.changePercent24Hr && (
-                    <>
-                      <span className={styles.ifIncreaseOrDecreaseIcon}>
+                <div className={styles.leftCardSide}>
+                  {coin.name && (
+                    <div className={styles.nameContainer}>
+                      <p className={styles.name}>
+                        {coin.name.charAt(0).toUpperCase() + coin.name.slice(1)}
+                      </p>
+                      <p className={styles.symbol}>{coin.symbol}</p>
+                    </div>
+                  )}
+                  <div className={styles.priceContainer}>
+                    {coin.changePercent24Hr && (
+                      <>
                         {parseFloat(coin.changePercent24Hr) >= 0 ? (
                           <GoTriangleUp style={{ color: "#00ff00" }} />
                         ) : (
                           <GoTriangleDown style={{ color: "#ff0000" }} />
                         )}
-                      </span>
-                      <div>
-                        <p>{parseFloat(coin.changePercent24Hr).toFixed(2)}%</p>
 
-                        <p>{parseFloat(coin.priceUsd).toFixed(2)}</p>
-                      </div>
-                    </>
+                        <div className={styles.percentChange}>
+                          <p>
+                            {parseFloat(coin.changePercent24Hr).toFixed(2)}%
+                          </p>
+                        </div>
+                      </>
+                    )}
+                  </div>
+                </div>
+                <div className={styles.rightCardSide}>
+                  {coin.priceUsd && (
+                    <p className={styles.price}>
+                      ${parseFloat(coin.priceUsd).toFixed(2)}
+                    </p>
                   )}
                 </div>
               </div>

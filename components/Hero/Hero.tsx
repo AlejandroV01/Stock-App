@@ -1,42 +1,21 @@
-/* eslint-disable */
-'use client'
-import { Button } from '@granite/core'
-import Image from 'next/image'
-import React, { useEffect, useState } from 'react'
-import { GoTriangleDown, GoTriangleUp } from 'react-icons/go'
-import { json } from 'stream/consumers'
-import StockBG from '../../public/images/undrawinvest.svg'
-import styles from './Hero.module.css'
-const Hero = (): JSX.Element => {
-  const [topFour, setTopFour]: any[] = useState([])
+"use client";
 
-  const fetchIcon = async ({ symbol }: { symbol: string }) => {
-    let lowerSymbol = symbol.toLowerCase()
-    const res = await fetch(`https://cryptoicons.org/api/black/${lowerSymbol}/100`)
-  }
+import { Button, Divider } from "@granite/core";
+import Image from "next/image";
+import React from "react";
+import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
+import StockBG from "../../public/images/undrawinvest.svg";
+import { ICoin } from "../../types/api/ICoin";
+import styles from "./Hero.module.css";
 
-  const fetchTopFour = async () => {
-    const res = await fetch('https://api.coincap.io/v2/assets')
-    const jsonData = res.json()
-    console.log(jsonData)
-  }
-  useEffect(() => {
-    fetch('https://api.coincap.io/v2/assets')
-      .then(res => res.json())
-      .then(data => {
-        console.log(data)
-        let fourArr = []
-        for (let i = 0; i < 4; i++) {
-          let coinPrice = data.data[i].priceUsd
-          let roundedPrice = Math.round(coinPrice * 100) / 100
-          fourArr.push({ name: data.data[i].id, symbol: data.data[i].symbol, price: roundedPrice, priceChange: data.data[i].changePercent24Hr })
-        }
-        setTopFour(fourArr)
-      })
-  }, [])
+interface Props {
+  topFour: ICoin[];
+}
+
+const Hero = ({ topFour }: Props): JSX.Element => {
   return (
     <div className={styles.body}>
-      <div className={styles.gradient}></div>
+      <div className={styles.gradient} />
       <div className={styles.container}>
         <div className={styles.leftContainer}>
           <h1>The Info Center For Exchanges</h1>
@@ -45,45 +24,61 @@ const Hero = (): JSX.Element => {
         </div>
         <div className={styles.rightContainer}>
           <Image
-            width={550}
+            alt=""
             src={StockBG}
-            alt=''
             style={{
-              height: 'fit-content',
-              objectFit: 'contain',
+              height: "fit-content",
+              objectFit: "contain",
             }}
-          ></Image>
+            width={550}
+          />
         </div>
       </div>
-      <div className={styles.subTitle}>
-        <p>Top Four Cryptos By Market Cap</p>
-      </div>
-
+      <Divider color="white" label="Top 4 coins today" labelPosition="left" />
       <div className={styles.priceDisplay}>
-        {topFour &&
-          topFour.map((coin: any, index: number) => (
-            <div className={styles.card} key={index}>
-              <Image
-                width={50}
-                height={50}
-                style={{ height: 'fit-content', objectFit: 'contain' }}
-                alt=''
-                src={`https://cryptoicons.org/api/black/${coin.symbol.toLowerCase()}/50`}
-              ></Image>
+        {topFour.map((coin: ICoin) => {
+          return (
+            <div key={`top-four-coin-${coin.id}`} className={styles.card}>
+              {coin.symbol && (
+                <Image
+                  alt=""
+                  height={50}
+                  src={`https://cryptoicons.org/api/black/${coin.symbol.toLowerCase()}/50`}
+                  style={{ height: "fit-content", objectFit: "contain" }}
+                  width={50}
+                />
+              )}
               <div className={styles.cardInfo}>
-                <p>{coin.name.charAt(0).toUpperCase() + coin.name.slice(1)}</p>
+                {coin.name && (
+                  <p>
+                    {coin.name.charAt(0).toUpperCase() + coin.name.slice(1)}
+                  </p>
+                )}
                 <div className={styles.priceContainer}>
-                  <span className={styles.ifIncreaseOrDecreaseIcon}>
-                    {coin.priceChange >= 0 ? <GoTriangleUp style={{ color: '#00ff00' }} /> : <GoTriangleDown style={{ color: '#ff0000' }} />}
-                  </span>
-                  <p>{coin.price === 1 ? '1.00' : coin.price}</p>
+                  {coin.priceUsd && coin.changePercent24Hr && (
+                    <>
+                      <span className={styles.ifIncreaseOrDecreaseIcon}>
+                        {parseFloat(coin.changePercent24Hr) >= 0 ? (
+                          <GoTriangleUp style={{ color: "#00ff00" }} />
+                        ) : (
+                          <GoTriangleDown style={{ color: "#ff0000" }} />
+                        )}
+                      </span>
+                      <div>
+                        <p>{parseFloat(coin.changePercent24Hr).toFixed(2)}%</p>
+
+                        <p>{parseFloat(coin.priceUsd).toFixed(2)}</p>
+                      </div>
+                    </>
+                  )}
                 </div>
               </div>
             </div>
-          ))}
+          );
+        })}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Hero
+export default Hero;

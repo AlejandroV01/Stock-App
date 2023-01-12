@@ -13,7 +13,6 @@ interface Props {
 const Hero = ({ topFour }: Props): JSX.Element => {
   return (
     <div className={styles.body}>
-      <div className={styles.gradient} />
       <div className={styles.container}>
         <div className={styles.leftContainer}>
           <h1>The Info Center For Exchanges</h1>
@@ -37,6 +36,7 @@ const Hero = ({ topFour }: Props): JSX.Element => {
                   {coin.name && (
                     <div className={styles.nameContainer}>
                       <p className={styles.name}>
+                        {/* eslint-disable-next-line operator-linebreak  */}
                         {coin.name.charAt(0).toUpperCase() + coin.name.slice(1)}
                       </p>
                       <p className={styles.symbol}>{coin.symbol}</p>
@@ -72,6 +72,7 @@ const Hero = ({ topFour }: Props): JSX.Element => {
           );
         })}
       </div>
+      <div className={styles.gradient} />
     </div>
   );
 };

@@ -60,7 +60,21 @@ const HistoryChart = ({ data }: IHistory): JSX.Element => {
             inverseColors: false,
             opacityFrom: 0.5,
             opacityTo: 0,
-            stops: [0, 90, 100],
+            stops: [40, 90, 100],
+          },
+        },
+        grid: {
+          show: true,
+          borderColor: "rgba(100,100,100, 0.2)",
+          xaxis: {
+            lines: {
+              show: false,
+            },
+          },
+          yaxis: {
+            lines: {
+              show: true,
+            },
           },
         },
         yaxis: {

@@ -1,6 +1,7 @@
 import React from "react";
 import HistoryChart from "../../../components/Charts/History/HistoryChart";
 import { IHistory } from "../../../types/api/IHistory";
+import IntervalSelectionHeader from "./(components)/IntervalSelectionHeader/IntervalSelectionHeader";
 
 interface PageProps {
   params: {
@@ -20,13 +21,13 @@ const getCoinData = async ({ coin_id }: { coin_id: string }) => {
 
 const getCoinHistoricData = async ({
   coin_id,
-  history,
+  interval,
 }: {
   coin_id: string;
-  history: string;
+  interval: string;
 }): Promise<IHistory> => {
   const res = await fetch(
-    `https://api.coincap.io/v2/assets/${coin_id}/history?interval=${history}`,
+    `https://api.coincap.io/v2/assets/${coin_id}/history?interval=${interval}`,
     {
       cache: "no-store",
     }
@@ -38,35 +39,31 @@ const getCoinHistoricData = async ({
 };
 
 const CoinInfoPage = async ({ params }: PageProps): Promise<JSX.Element> => {
-  let history = params.coin_data[1];
-  if (!history) history = "d1";
+  let interval = params.coin_data[1];
+  if (!interval) interval = "d1";
 
   const coinInfoData = getCoinData({ coin_id: params.coin_data[0] });
   const coinHistoryData = getCoinHistoricData({
     coin_id: params.coin_data[0],
-    history,
+    interval,
   });
 
-  const [coinInfo, coinHistory] = await Promise.all([
+  const [coinInfo, coinInterval] = await Promise.all([
     coinInfoData,
     coinHistoryData,
   ]);
 
-  if (coinHistory?.error) throw new Error(coinHistory?.error);
-  if (coinInfo?.error) throw new Error(coinHistory?.error);
+  if (coinInterval?.error) throw new Error(coinInterval?.error);
+  if (coinInfo?.error) throw new Error(coinInterval?.error);
 
   return (
     <div>
-      <h1>Coin Info:</h1>
-      <p>id: {params.coin_data[0]}</p>
-      <p>history: {params.coin_data[1]}</p>
-      <br />
-      <HistoryChart data={coinHistory.data} />
-      <h2>Basic data:</h2>
-      <p>{JSON.stringify(coinInfo)}</p>
-      <br />
-      <h2>History:</h2>
-      <p>{JSON.stringify(coinHistory)}</p>
+      <IntervalSelectionHeader
+        coin_id={params.coin_data[0]}
+        interval={interval}
+      />
+
+      <HistoryChart data={coinInterval.data} />
     </div>
   );
 };

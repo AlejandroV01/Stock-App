@@ -1,7 +1,7 @@
 import React from "react";
 import HistoryChart from "../../../components/Charts/History/HistoryChart";
 import { IHistory } from "../../../types/api/IHistory";
-import IntervalSelectionHeader from "./(components)/IntervalSelectionHeader/IntervalSelectionHeader";
+import IntervalSelectionHeader from "./IntervalSelectionHeader/IntervalSelectionHeader";
 
 interface PageProps {
   params: {

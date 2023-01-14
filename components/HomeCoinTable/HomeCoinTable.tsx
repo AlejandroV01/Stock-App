@@ -5,6 +5,7 @@ import React from "react";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import currencyFormatter from "../../functions/currencyFormatter";
 import { ICoin } from "../../types/api/ICoin";
+import HistoryPreview from "../HistoryPreview/HistoryPreview";
 import ImageWithFallback from "../_helpers/ImageWithFallback/ImageWithFallback";
 import styles from "./HomeCoinTable.module.css";
 
@@ -88,7 +89,9 @@ const HomeCoinTable = ({ top100 }: Props): JSX.Element => {
                 })}
                 <span className={styles.coin_symbol}>{coin.symbol}</span>
               </td>
-              <td>TBA</td>
+              <td>
+                <HistoryPreview coin_id={coin.id} />
+              </td>
             </tr>
           );
         })}

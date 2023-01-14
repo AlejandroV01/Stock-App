@@ -10,7 +10,7 @@ const fetchTopFour = async (): Promise<{ data: ICoin[]; error?: any }> => {
 };
 
 const fetch100Coins = async (): Promise<{ data: ICoin[]; error?: any }> => {
-  const res = await fetch("https://api.coincap.io/v2/assets?limit=100");
+  const res = await fetch("https://api.coincap.io/v2/assets?limit=20");
   return res.json();
 };
 

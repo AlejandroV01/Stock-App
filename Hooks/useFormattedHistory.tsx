@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { IHistory } from "../types/api/IHistory";
 
 export interface FormattedHistory {

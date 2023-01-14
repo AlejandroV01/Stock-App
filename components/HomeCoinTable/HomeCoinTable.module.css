@@ -1,37 +1,46 @@
-.gridTitles {
-  display: flex;
+.table {
   width: 100%;
-  justify-content: space-between;
-  border-bottom: 1px solid rgb(46, 49, 59);
-  border-top: 1px solid rgb(46, 49, 59);
-  padding: 0.5rem 0;
-}
-.gridTitle {
-  width: 100%;
+  border: none;
 }
 
-.coinRow {
-  display: flex;
-  width: 100%;
-  justify-content: space-between;
-  padding: 1rem 0;
-  border-bottom: 1px solid rgb(46, 49, 59);
+.table th {
+  font-weight: normal;
+  text-align: left;
 }
-.coinColumn {
-  width: 100%;
+
+.table th {
+  padding: 10px;
+}
+
+.table td {
+  border-bottom: 1px solid rgb(50, 50, 50);
+  padding: 10px;
+}
+
+.table tbody tr td:nth-child(1),
+.table thead th:nth-child(1) {
+  text-align: center;
+}
+
+.table tbody tr td:nth-child(2) {
   display: flex;
   align-items: center;
-  gap: 5px;
 }
 
-.coinNameInfo p {
-  margin: 0;
-  padding: 0;
+.table tbody tr td:not(:nth-child(1), :nth-child(2)),
+.table thead th:not(:nth-child(1), :nth-child(2)) {
+  text-align: right;
+}
+
+.table tbody tr:hover {
+  cursor: pointer;
+  background-color: rgb(25, 29, 41);
 }
 
 .coinNameInfo {
+  margin-left: 10px;
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
 }
 
 .positiveChange {
@@ -47,6 +56,7 @@
 }
 
 .coin_symbol {
+  margin-left: 5px;
   color: gray;
   font-size: 12px;
 }

@@ -2,6 +2,7 @@ import React from "react";
 import Hero from "../components/Hero/Hero";
 import HomeCoinTable from "../components/HomeCoinTable/HomeCoinTable";
 import { ICoin } from "../types/api/ICoin";
+import "../styles/globals.css";
 
 const fetchTopFour = async (): Promise<{ data: ICoin[]; error?: any }> => {
   const res = await fetch("https://api.coincap.io/v2/assets?limit=4");

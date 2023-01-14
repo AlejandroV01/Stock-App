@@ -1,0 +1,49 @@
+.grid {
+}
+.gridTitles {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  border-bottom: 1px solid rgb(46, 49, 59);
+  border-top: 1px solid rgb(46, 49, 59);
+  padding: 0.5rem 0;
+}
+.gridTitle {
+  width: 100%;
+}
+
+.coinRow {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgb(46, 49, 59);
+}
+.coinColumn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.coinNameInfo p {
+  margin: 0;
+  padding: 0;
+}
+
+.coinNameInfo {
+  display: flex;
+  flex-direction: column;
+}
+
+.positiveChange {
+  color: #16c784;
+}
+.negativeChange {
+  color: #ea3943;
+}
+
+.cryptoIcon {
+  width: 30px;
+  aspect-ratio: 1/ 1;
+}

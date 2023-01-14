@@ -28,7 +28,7 @@ const Hero = ({ topFour }: Props): JSX.Element => {
                 <img
                   alt=""
                   className={styles.coinIcon}
-                  src={`https://cryptoicons.org/api/black/${coin.symbol.toLowerCase()}/50`}
+                  src={`/icons/${coin.symbol?.toLowerCase()}.svg`}
                 />
               )}
               <div className={styles.cardInfo}>
@@ -63,7 +63,16 @@ const Hero = ({ topFour }: Props): JSX.Element => {
                 <div className={styles.rightCardSide}>
                   {coin.priceUsd && (
                     <p className={styles.price}>
-                      ${parseFloat(coin.priceUsd).toFixed(2)}
+                      $
+                      {new Intl.NumberFormat().format(
+                        parseFloat(coin.priceUsd)
+                      ) === "1" ? (
+                        <>1.00</>
+                      ) : (
+                        new Intl.NumberFormat().format(
+                          parseFloat(coin.priceUsd)
+                        )
+                      )}
                     </p>
                   )}
                 </div>

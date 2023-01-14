@@ -1,27 +1,12 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import ReactApexChart from "react-apexcharts";
+import { useFormattedHistory } from "../../../Hooks/useFormattedHistory";
 import { IHistory } from "../../../types/api/IHistory";
 
-interface FormattedHistory {
-  x: string;
-  y: string;
-}
-
 const HistoryChart = ({ data }: IHistory): JSX.Element => {
-  const [formattedData, setFormattedData] = useState<FormattedHistory[] | null>(
-    null
-  );
-
-  useEffect(() => {
-    if (!data) return;
-    const resultArray = data.map((elm) => {
-      return { x: elm.date, y: elm.priceUsd };
-    });
-
-    setFormattedData(resultArray);
-  }, [data]);
+  const { formattedData } = useFormattedHistory({ data });
 
   return (
     <ReactApexChart

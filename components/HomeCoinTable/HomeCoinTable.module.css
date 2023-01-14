@@ -1,6 +1,9 @@
 .table {
   width: 100%;
+  max-width: 100vw;
   border: none;
+  overflow: scroll;
+  padding: 20px;
 }
 
 .table th {

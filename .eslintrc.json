@@ -50,6 +50,7 @@
     "linebreak-style": 0,
     "@typescript-eslint/comma-dangle": "off",
     "react/jsx-one-expression-per-line": "off",
+    "react/require-default-props": "off",
     "react/function-component-definition": [
       2,
       {

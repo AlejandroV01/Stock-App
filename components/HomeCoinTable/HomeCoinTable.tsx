@@ -2,6 +2,7 @@
 
 import React from "react";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
+import currencyFormatter from "../../functions/currencyFormatter";
 import { ICoin } from "../../types/api/ICoin";
 import ImageWithFallback from "../_helpers/ImageWithFallback/ImageWithFallback";
 import styles from "./HomeCoinTable.module.css";
@@ -43,13 +44,7 @@ const HomeCoinTable = ({ topFour }: Props): JSX.Element => {
           </div>
           <div className={styles.coinColumn}>
             <p className={styles.price}>
-              $
-              {new Intl.NumberFormat().format(parseFloat(coin.priceUsd)) ===
-              "1" ? (
-                <>1.00</>
-              ) : (
-                new Intl.NumberFormat().format(parseFloat(coin.priceUsd))
-              )}
+              {currencyFormatter({ value: coin.priceUsd })}
             </p>
           </div>
           <div className={styles.coinColumn}>

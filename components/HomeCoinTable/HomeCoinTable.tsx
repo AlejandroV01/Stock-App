@@ -3,6 +3,7 @@
 import React from "react";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import { ICoin } from "../../types/api/ICoin";
+import ImageWithFallback from "../_helpers/ImageWithFallback/ImageWithFallback";
 import styles from "./HomeCoinTable.module.css";
 
 interface Props {
@@ -26,14 +27,13 @@ const HomeCoinTable = ({ topFour }: Props): JSX.Element => {
         <div key={coin.rank} className={styles.coinRow}>
           <div className={styles.coinColumn}>{coin.rank}</div>
           <div className={styles.coinColumn}>
-            <img
+            <ImageWithFallback
               alt=""
               className={styles.cryptoIcon}
-              onError={() => {
-                `/icons/${coin.symbol?.toLowerCase()}.png`;
-              }}
+              fallback={`/icons/${coin.symbol?.toLowerCase()}.png`}
               src={`/icons/${coin.symbol?.toLowerCase()}.svg`}
             />
+
             <div className={styles.coinNameInfo}>
               <p>{coin.name}</p>
               <p style={{ color: "rgb(185, 185, 185) ", fontSize: "0.8rem" }}>

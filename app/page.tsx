@@ -8,7 +8,7 @@ const fetchTopFour = async (): Promise<{ data: ICoin[]; error?: any }> => {
   return res.json();
 };
 
-const fetch20Coins = async (): Promise<{ data: ICoin[]; error?: any }> => {
+const fetch100Coins = async (): Promise<{ data: ICoin[]; error?: any }> => {
   const res = await fetch("https://api.coincap.io/v2/assets?limit=100");
   return res.json();
 };
@@ -24,8 +24,8 @@ const Page = async (): Promise<JSX.Element> => {
     throw new Error("Unable to get top four coins today");
   }
 
-  const top20 = await fetch20Coins();
-  if (top20.error || !top20.data) {
+  const top100 = await fetch100Coins();
+  if (top100.error || !top100.data) {
     throw new Error("Unable to get top twenty coins today");
   }
 
@@ -37,7 +37,7 @@ const Page = async (): Promise<JSX.Element> => {
   return (
     <div>
       <Hero topFour={topFour.data} />
-      <HomeCoinTable topFour={top20.data} />
+      <HomeCoinTable top100={top100.data} />
     </div>
   );
 };

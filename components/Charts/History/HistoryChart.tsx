@@ -31,7 +31,6 @@ const HistoryChart = ({ data }: IHistory): JSX.Element => {
           foreColor: "white",
           type: "area",
           stacked: false,
-          height: 350,
           zoom: {
             type: "x",
             enabled: true,
@@ -44,6 +43,11 @@ const HistoryChart = ({ data }: IHistory): JSX.Element => {
 
         dataLabels: {
           enabled: false,
+        },
+        stroke: {
+          show: true,
+          width: 1,
+          curve: "smooth",
         },
 
         markers: {

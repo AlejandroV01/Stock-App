@@ -1,5 +1,6 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import React from "react";
 import { GoTriangleDown, GoTriangleUp } from "react-icons/go";
 import currencyFormatter from "../../functions/currencyFormatter";
@@ -12,6 +13,8 @@ interface Props {
 }
 
 const HomeCoinTable = ({ top100 }: Props): JSX.Element => {
+  const { push } = useRouter();
+
   return (
     <table border={0} cellSpacing={0} className={styles.table}>
       <thead>
@@ -27,7 +30,10 @@ const HomeCoinTable = ({ top100 }: Props): JSX.Element => {
       <tbody>
         {top100.map((coin: ICoin): JSX.Element => {
           return (
-            <tr key={coin.rank}>
+            <tr
+              key={coin.rank}
+              onClick={() => push(`/coin-info/${coin.id}/d1`)}
+            >
               <td>{coin.rank}</td>
               <td>
                 <ImageWithFallback

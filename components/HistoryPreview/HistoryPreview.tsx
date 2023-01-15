@@ -1,59 +1,56 @@
 "use client";
 
+import React from "react";
 import { Flex, Spinner } from "@granite/core";
-import React, { useEffect, useState } from "react";
+import useSWR from "swr";
+import fetcher from "../../functions/fetcher";
 import useInViewport from "../../Hooks/useInViewport";
-import { IHistory } from "../../types/api/IHistory";
 import PreviewChart from "../Charts/Preview/PreviewChart";
 
 interface Props {
   coin_id: string;
 }
 
+const oneDayInSeconds = 86400000;
+const timestampNow = Date.now();
+
 const HistoryPreview = ({ coin_id }: Props) => {
   const { isInViewport, ref } = useInViewport();
-  const [historyData, setHistoryData] = useState<IHistory | null>(null);
 
-  useEffect(() => {
-    if (!isInViewport) return;
-    if (historyData) return;
+  const endpoint = `https://api.coincap.io/v2/assets/${coin_id}/history?interval=m30&start=${
+    timestampNow - oneDayInSeconds
+  }&end=${timestampNow}`;
 
-    const getData = async () => {
-      if (!isInViewport) return;
-      const getCoinHistoricData = async (): Promise<IHistory> => {
-        const oneDayInSeconds = 86400000;
-        const timestampNow = Date.now();
-        const startTime = timestampNow - oneDayInSeconds;
-        const res = await fetch(
-          `https://api.coincap.io/v2/assets/${coin_id}/history?interval=m30&start=${startTime}&end=${timestampNow}`,
-          {
-            cache: "no-store",
-          }
-        );
-        if (!res) throw new Error("Unable to get coin data.");
-        return res.json();
-      };
-      const data = await getCoinHistoricData();
-      setHistoryData(data);
-    };
-    getData();
-  }, [coin_id, isInViewport, historyData]);
+  const shouldFetchData = isInViewport;
 
-  return (
-    <div ref={ref}>
-      {isInViewport && (
-        <div>
-          {historyData ? (
-            <PreviewChart data={historyData.data} />
-          ) : (
-            <Flex justifyContent="flex-end">
-              <Spinner />
-            </Flex>
-          )}
-        </div>
-      )}
-    </div>
+  const { data, error, isLoading } = useSWR(
+    () => (shouldFetchData ? endpoint : null),
+    fetcher
   );
+
+  // we need this because the ref in the return function always needs to be rendered
+  // that is how we determine if the component is in screen or not
+  const renderPreview = () => {
+    if (isLoading) {
+      return (
+        <Flex justifyContent="flex-end">
+          <Spinner />
+        </Flex>
+      );
+    }
+
+    if (error || !data) {
+      return (
+        <Flex justifyContent="flex-end">
+          <span>Error</span>
+        </Flex>
+      );
+    }
+
+    return <PreviewChart data={data.data} />;
+  };
+
+  return <div ref={ref}>{renderPreview()}</div>;
 };
 
 export default HistoryPreview;

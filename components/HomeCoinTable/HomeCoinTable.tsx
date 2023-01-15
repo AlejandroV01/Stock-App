@@ -31,10 +31,7 @@ const HomeCoinTable = ({ top100 }: Props): JSX.Element => {
       <tbody>
         {top100.map((coin: ICoin): JSX.Element => {
           return (
-            <tr
-              key={coin.rank}
-              onClick={() => push(`/coin-info/${coin.id}/d1`)}
-            >
+            <tr key={coin.rank} onClick={() => push(`/coin-info/${coin.id}`)}>
               <td>{coin.rank}</td>
               <td>
                 <ImageWithFallback

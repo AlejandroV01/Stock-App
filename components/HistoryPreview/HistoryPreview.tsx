@@ -11,14 +11,14 @@ interface Props {
   coin_id: string;
 }
 
-const oneDayInSeconds = 86400000;
+const sevenDayInSeconds = 604800000;
 const timestampNow = Date.now();
 
 const HistoryPreview = ({ coin_id }: Props) => {
   const { isInViewport, ref } = useInViewport();
 
-  const endpoint = `https://api.coincap.io/v2/assets/${coin_id}/history?interval=m30&start=${
-    timestampNow - oneDayInSeconds
+  const endpoint = `https://api.coincap.io/v2/assets/${coin_id}/history?interval=h1&start=${
+    timestampNow - sevenDayInSeconds
   }&end=${timestampNow}`;
 
   const shouldFetchData = isInViewport;
@@ -31,6 +31,8 @@ const HistoryPreview = ({ coin_id }: Props) => {
   // we need this because the ref in the return function always needs to be rendered
   // that is how we determine if the component is in screen or not
   const renderPreview = () => {
+    if (!isInViewport) return null;
+
     if (isLoading) {
       return (
         <Flex justifyContent="flex-end">
@@ -39,7 +41,7 @@ const HistoryPreview = ({ coin_id }: Props) => {
       );
     }
 
-    if (error || !data) {
+    if (error) {
       return (
         <Flex justifyContent="flex-end">
           <span>Error</span>

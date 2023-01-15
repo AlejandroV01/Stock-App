@@ -1,8 +1,10 @@
+export interface IHistoryData {
+  date: string;
+  priceUsd: string;
+  time: string;
+}
+
 export interface IHistory {
-  data: {
-    date: string;
-    priceUsd: string;
-    time: string;
-  }[];
+  data?: IHistoryData[];
   error?: string;
 }

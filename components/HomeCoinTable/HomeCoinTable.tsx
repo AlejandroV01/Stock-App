@@ -26,7 +26,7 @@ const HomeCoinTable = ({ top100 }: Props): JSX.Element => {
         <th>Market Cap</th>
         <th>Volume(24h)</th>
         <th>Circulating Supply</th>
-        <th>Graph</th>
+        <th>Last 7 Days</th>
       </thead>
       <tbody>
         {top100.map((coin: ICoin): JSX.Element => {

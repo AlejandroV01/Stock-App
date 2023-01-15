@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import React from "react";
 import HistoryChart from "../../../components/Charts/History/HistoryChart";
 import { IHistory } from "../../../types/api/IHistory";
@@ -39,10 +40,11 @@ const getCoinHistoricData = async ({
 };
 
 const CoinInfoPage = async ({ params }: PageProps): Promise<JSX.Element> => {
+  const coin_id = params.coin_data[0];
   let interval = params.coin_data[1];
   if (!interval) interval = "d1";
 
-  const coinInfoData = getCoinData({ coin_id: params.coin_data[0] });
+  const coinInfoData = getCoinData({ coin_id });
   const coinHistoryData = getCoinHistoricData({
     coin_id: params.coin_data[0],
     interval,
@@ -58,12 +60,12 @@ const CoinInfoPage = async ({ params }: PageProps): Promise<JSX.Element> => {
 
   return (
     <div>
-      <IntervalSelectionHeader
-        coin_id={params.coin_data[0]}
+      <IntervalSelectionHeader coin_id={coin_id} interval={interval} />
+      <HistoryChart
+        coin_id={coin_id}
+        initialData={coinInterval.data}
         interval={interval}
       />
-
-      <HistoryChart data={coinInterval.data} />
     </div>
   );
 };

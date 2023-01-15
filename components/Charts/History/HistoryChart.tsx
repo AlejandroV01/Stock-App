@@ -2,11 +2,35 @@
 
 import React from "react";
 import ReactApexChart from "react-apexcharts";
+import useSWR from "swr";
 import { useFormattedHistory } from "../../../Hooks/useFormattedHistory";
-import { IHistory } from "../../../types/api/IHistory";
+import { IHistory, IHistoryData } from "../../../types/api/IHistory";
+import fetcher from "../../../functions/fetcher";
 
-const HistoryChart = ({ data }: IHistory): JSX.Element => {
-  const { formattedData } = useFormattedHistory({ data });
+interface Props extends IHistory {
+  coin_id: string;
+  interval: string;
+  initialData?: IHistoryData[];
+}
+
+const HistoryChart = ({
+  initialData,
+  coin_id,
+  interval,
+}: Props): JSX.Element => {
+  const { data, isLoading, error } = useSWR(
+    `https://api.coincap.io/v2/assets/${coin_id}/history?interval=${interval}`,
+    fetcher,
+    { refreshInterval: 30000 } // refresh every 30 seconds
+  );
+
+  const { formattedData } = useFormattedHistory({
+    data: data ? data.data : initialData,
+  });
+
+  if (isLoading) {
+    return <p>Loading</p>;
+  }
 
   return (
     <ReactApexChart

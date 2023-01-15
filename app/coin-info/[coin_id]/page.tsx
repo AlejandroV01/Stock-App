@@ -1,16 +1,8 @@
-/* eslint-disable @typescript-eslint/naming-convention */
 import React from "react";
-import HistoryChart from "../../../components/Charts/History/HistoryChart";
 import { IHistory } from "../../../types/api/IHistory";
-import IntervalSelectionHeader from "./IntervalSelectionHeader/IntervalSelectionHeader";
+import CompleteCoinGraph from "./CompleteCoinGraph/CompleteCoinGraph";
 
-interface PageProps {
-  params: {
-    coin_data: string[];
-  };
-}
-
-const getCoinData = async ({ coin_id }: { coin_id: string }) => {
+const getCoinData = async (coin_id: string) => {
   const res = await fetch(`https://api.coincap.io/v2/assets/${coin_id}`, {
     cache: "no-store",
   });
@@ -39,14 +31,16 @@ const getCoinHistoricData = async ({
   return res.json();
 };
 
-const CoinInfoPage = async ({ params }: PageProps): Promise<JSX.Element> => {
-  const coin_id = params.coin_data[0];
-  let interval = params.coin_data[1];
+const CoinInfoPage = async ({ params }: any) => {
+  const coinId = params.coin_id;
+
+  let interval;
   if (!interval) interval = "d1";
 
-  const coinInfoData = getCoinData({ coin_id });
+  const coinInfoData = getCoinData(coinId);
+
   const coinHistoryData = getCoinHistoricData({
-    coin_id: params.coin_data[0],
+    coin_id: coinId,
     interval,
   });
 
@@ -57,13 +51,11 @@ const CoinInfoPage = async ({ params }: PageProps): Promise<JSX.Element> => {
 
   if (coinInterval?.error) throw new Error(coinInterval?.error);
   if (coinInfo?.error) throw new Error(coinInterval?.error);
-
   return (
     <div>
-      <IntervalSelectionHeader coin_id={coin_id} interval={interval} />
-      <HistoryChart
-        coin_id={coin_id}
-        initialData={coinInterval.data}
+      <CompleteCoinGraph
+        coinId={coinId}
+        historyData={coinInterval}
         interval={interval}
       />
     </div>

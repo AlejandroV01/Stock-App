@@ -34,7 +34,13 @@ const CoinInfoPage = ({
         handleIntervalChange={handleIntervalChange}
         interval={intervalState}
       />
-      <HistoryChart data={historyDataState} />
+      {historyDataState && (
+        <HistoryChart
+          coin_id={coinId}
+          data={historyDataState}
+          interval={intervalState}
+        />
+      )}
     </div>
   );
 };

@@ -1,0 +1,28 @@
+.rs-table-cell {
+  background-color: transparent !important;
+  color: white;
+}
+
+.rs-table-row-header {
+  background-color: transparent !important;
+}
+.rs-table-row {
+  display: flex;
+}
+.rs-table-row {
+  border-bottom: 1px solid rgb(50, 50, 50);
+
+  height: 120px;
+  padding-left: 20px;
+}
+.rs-table-row:hover {
+  background-color: rgb(25, 29, 41) !important;
+}
+.rs-table {
+  border: none;
+  cursor: pointer;
+}
+
+.rs-table-cell-group-fixed-left {
+  background-color: transparent !important;
+}

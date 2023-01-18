@@ -40,7 +40,7 @@ const Page = async (): Promise<JSX.Element> => {
     <div>
       <Hero topFour={topFour.data} />
       <HomeCoinTable top100={top100.data} />
-      {/* <HomeReactTable top100={top100.data} /> */}
+      <HomeReactTable top100={top100.data} />
     </div>
   );
 };

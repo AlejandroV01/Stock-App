@@ -26,7 +26,8 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "app/posts/page.js",
-    "app/loading.js"
+    "app/loading.js",
+    "components/HomeReactTable/HomeReactTable.tsx"
   ],
   "exclude": ["node_modules"]
 }

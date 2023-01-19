@@ -1,8 +1,9 @@
 import React from "react";
 import Hero from "../components/Hero/Hero";
 import HomeCoinTable from "../components/HomeCoinTable/HomeCoinTable";
-import { ICoin } from "../types/api/ICoin";
+import HomeReactTable from "../components/HomeReactTable/HomeReactTable";
 import "../styles/globals.css";
+import { ICoin } from "../types/api/ICoin";
 
 const fetchTopFour = async (): Promise<{ data: ICoin[]; error?: any }> => {
   const res = await fetch("https://api.coincap.io/v2/assets?limit=4");
@@ -38,7 +39,8 @@ const Page = async (): Promise<JSX.Element> => {
   return (
     <div>
       <Hero topFour={topFour.data} />
-      <HomeCoinTable top100={top100.data} />
+      {/* <HomeCoinTable top100={top100.data} /> */}
+      <HomeReactTable top100={top100.data} />
     </div>
   );
 };

@@ -3,9 +3,9 @@
 import React from "react";
 import ReactApexChart from "react-apexcharts";
 import useSWR from "swr";
+import fetcher from "../../../functions/fetcher";
 import { useFormattedHistory } from "../../../Hooks/useFormattedHistory";
 import { IHistory, IHistoryData } from "../../../types/api/IHistory";
-import fetcher from "../../../functions/fetcher";
 
 interface Props extends IHistory {
   coin_id: string;
@@ -118,7 +118,7 @@ const HistoryChart = ({
       }}
       series={[{ data: formattedData }]}
       type="area"
-      width="100%"
+      width="70%"
     />
   );
 };

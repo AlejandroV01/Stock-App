@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.coinTitle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.headingFont {
+  font-size: 2rem;
+  margin: 0;
+}
+.graySquare {
+  background-color: rgb(40, 49, 58);
+  padding: 2px 5px;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.rightContainer {
+  flex-grow: 1;
+}
+
+.positiveChange {
+  background-color: #16c784;
+  padding: 5px 10px;
+}
+.negativeChange {
+  background-color: #ea3943;
+}

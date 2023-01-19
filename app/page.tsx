@@ -1,6 +1,6 @@
 import React from "react";
 import Hero from "../components/Hero/Hero";
-import HomeCoinTable from "../components/HomeCoinTable/HomeCoinTable";
+// import HomeCoinTable from "../components/HomeCoinTable/HomeCoinTable";
 import HomeReactTable from "../components/HomeReactTable/HomeReactTable";
 import "../styles/globals.css";
 import { ICoin } from "../types/api/ICoin";

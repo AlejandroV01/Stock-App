@@ -205,10 +205,10 @@ const HomeReactTable = ({ top100 }: Props) => {
           <CurrencyFormatterCell dataInfo="supply" dataKey="supply" />
         </Column>
 
-        {/* <Column flexGrow={1} fullText width={200}>
+        <Column flexGrow={1} fullText width={200}>
           <HeaderCell>Last 7 Days</HeaderCell>
           <GraphCell />
-        </Column> */}
+        </Column>
       </Table>
     </div>
   );

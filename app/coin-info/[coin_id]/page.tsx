@@ -57,6 +57,7 @@ const CoinInfoPage = async ({ params }: any) => {
       <BasicCoinInfo coinData={coinInfo.data} />
       <CompleteCoinGraph
         coinId={coinId}
+        coinInfo={coinInfo}
         historyData={coinInterval}
         interval={interval}
       />

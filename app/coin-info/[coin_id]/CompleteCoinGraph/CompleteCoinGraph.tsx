@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import HistoryChart from "../../../../components/Charts/History/HistoryChart";
+import { ICoin } from "../../../../types/api/ICoin";
 import { IHistory } from "../../../../types/api/IHistory";
 import IntervalSelectionHeader from "../IntervalSelectionHeader/IntervalSelectionHeader";
 
@@ -9,10 +10,12 @@ const CoinInfoPage = ({
   coinId,
   historyData,
   interval,
+  coinInfo,
 }: {
   coinId: string;
   historyData: IHistory;
   interval: string;
+  coinInfo: ICoin;
 }) => {
   const [intervalState, setIntervalState] = useState(interval);
   const [historyDataState, setHistoryDataState] = useState(historyData.data);
@@ -31,6 +34,7 @@ const CoinInfoPage = ({
     <div>
       <IntervalSelectionHeader
         coin_id={coinId}
+        coinInfo={coinInfo}
         handleIntervalChange={handleIntervalChange}
         interval={intervalState}
       />

@@ -1,5 +1,6 @@
 import React from "react";
 import { IHistory } from "../../../types/api/IHistory";
+import BasicCoinInfo from "./BasicCoinInfo/BasicCoinInfo";
 import CompleteCoinGraph from "./CompleteCoinGraph/CompleteCoinGraph";
 
 const getCoinData = async (coin_id: string) => {
@@ -53,8 +54,10 @@ const CoinInfoPage = async ({ params }: any) => {
   if (coinInfo?.error) throw new Error(coinInterval?.error);
   return (
     <div>
+      <BasicCoinInfo coinData={coinInfo.data} />
       <CompleteCoinGraph
         coinId={coinId}
+        coinInfo={coinInfo}
         historyData={coinInterval}
         interval={interval}
       />

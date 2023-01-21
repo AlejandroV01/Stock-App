@@ -1,0 +1,63 @@
+.container {
+  display: flex;
+  margin-bottom: 100px;
+  align-items: center;
+}
+
+.leftContainer {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  align-items: flex-start;
+  gap: 10px;
+  flex-grow: 1;
+}
+
+.coinTitle {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.headingFont {
+  font-size: 2rem;
+  margin: 0;
+}
+.graySquare {
+  background-color: rgb(40, 49, 58);
+  padding: 2px 5px;
+  font-size: 14px;
+  width: fit-content;
+}
+
+.rightContainer {
+  flex-grow: 1;
+}
+
+.positiveChange {
+  background-color: #16c784;
+  padding: 5px 10px;
+}
+.negativeChange {
+  background-color: #ea3943;
+}
+
+.pricesContainer {
+  border-bottom: 1px solid rgb(40, 49, 58);
+  padding-bottom: 16px;
+}
+
+.flexInfoContainer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 16px;
+  gap: 2rem;
+}
+
+.infoContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(8, 16, 26);
+  width: 100%;
+  padding: 1rem 10px;
+}

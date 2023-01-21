@@ -2,8 +2,10 @@
 
 import { useRouter } from "next/navigation";
 import React from "react";
+import { Pagination } from "rsuite";
 import { Cell, Column, HeaderCell, Table } from "rsuite-table";
 import "rsuite-table/dist/css/rsuite-table.css";
+import "rsuite/dist/rsuite.min.css";
 import currencyFormatter from "../../functions/currencyFormatter";
 import { ICoin } from "../../types/api/ICoin";
 import HistoryPreview from "../HistoryPreview/HistoryPreview";
@@ -140,11 +142,12 @@ const HomeReactTable = ({ top100 }: Props) => {
       setSortType(sortType);
     }, 500);
   };
+  const [page, setPage] = React.useState(1);
   return (
     <div>
       <Table
-        autoHeight
         data={getData()}
+        height={1500}
         onRowClick={(coin) => {
           push(`/coin-info/${coin.id}`);
         }}
@@ -205,11 +208,28 @@ const HomeReactTable = ({ top100 }: Props) => {
           <CurrencyFormatterCell dataInfo="supply" dataKey="supply" />
         </Column>
 
-        {/* <Column flexGrow={1} fullText width={200}>
+        <Column flexGrow={1} fullText width={200}>
           <HeaderCell>Last 7 Days</HeaderCell>
           <GraphCell />
-        </Column> */}
+        </Column>
       </Table>
+      <div style={{ padding: 20 }}>
+        <Pagination
+          activePage={page}
+          boundaryLinks
+          ellipsis
+          first
+          last
+          layout={["total", "-", "limit", "|", "pager", "skip"]}
+          limit={5}
+          maxButtons={5}
+          next
+          onChangePage={setPage}
+          prev
+          size="xs"
+          total={top100.length}
+        />
+      </div>
     </div>
   );
 };

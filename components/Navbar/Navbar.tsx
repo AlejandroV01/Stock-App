@@ -8,6 +8,7 @@ import Link from "next/link";
 import React from "react";
 import CVCLogo from "../../public/images/CVCLogoStandard.png";
 import styles from "./Navbar.module.css";
+
 const Navbar = (): JSX.Element => {
   return (
     <nav className={styles.Nav}>
